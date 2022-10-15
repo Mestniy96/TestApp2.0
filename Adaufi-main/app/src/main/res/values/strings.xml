@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">mashinetest</string>
+    <string name="upravl_macine">УПРАВЛЕНИЕ МАШИНОЙ</string>
+    <string name="X1_zad">Задержка X1</string>
+    <string name="elochka_up">Елочка вперед</string>
+    <string name="Speed_up">Скорость вперед</string>
+    <string name="minusx1">-</string>
+    <string name="plusx1">+</string>
+    <string name="x0_x1">Диапазон штока X0-X1</string>
+    <string name="x0_x1f">Диапазон штока X0-X1 %.0f-%.0f</string>
+    <string name="stoy">Угол: %.0f  Машина: %.0f</string>
+    <string name="stop">STOP</string>
+    <string name="pause_play">Pause/Play</string>
+    <string name="minusx2">-</string>
+    <string name="plusx2">+</string>
+    <string name="speed_down">Скорость назад</string>
+    <string name="elochka_down">Елочка назад</string>
+    <string name="zad_x0">Задержка X0</string>
+    <string name="minus_elochka_zad">-</string>
+    <string name="plus_eluchka_zad">+</string>
+    <string name="minus_zadx0">-</string>
+    <string name="plus_zadx0">+</string>
+    <string name="minus_eloxhkaup">-</string>
+    <string name="plus_elochkaup">+</string>
+    <string name="minuszad_x1">-</string>
+    <string name="plus_zadx1">+</string>
+    <string name="stat_zad_x1">0</string>
+    <string name="stat_zad_x0">0</string>
+    <string name="stat_el_up">0</string>
+    <string name="stat_el_down">0</string>
+    <string-array name="rangeSliderValues">
+        <item>0</item>
+        <item>100</item>
+    </string-array>
+    <string name="seekBar_3">0</string>
+    <string name="seekBar4">0</string>
+</resources>
