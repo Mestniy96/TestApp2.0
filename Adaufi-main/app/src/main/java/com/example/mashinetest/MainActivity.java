@@ -82,10 +82,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                     .getString(R.string.x0_x1f,slider.getValues().get(0) ,slider.getValues().get(1)));
         });
 
-        slider3.addOnChangeListener((slider3, value, fromUser)->{
-            slider3.setEnabled(false);
-            myHandler.postDelayed(pause, 1000);
-        });
 
 //Инициализация кнопки перехода
         btnActTwo = findViewById(R.id.btnActTwo);// Кнопка перехода в 2 меню
