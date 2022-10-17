@@ -33,12 +33,12 @@ import java.util.Set;
 import java.util.UUID;
 import com.google.android.material.slider.RangeSlider;
 import com.google.android.material.slider.Slider;
+import com.google.android.material.slider.Slider.OnChangeListener;
 
 import static android.R.layout.simple_list_item_1;
 
 
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener{
-
     private static final int REQUEST_ENABLE_BT = 1;
     Button btnActTwo, del_x1_up, del_x1_down, el_up_plus, el_up_minus, del_x0_up, del_x0_down, el_down_plus,
             el_down_minus, x1_plus, x1_minus, pause_play, x0_plus, x0_minus, stoping, btnActOne, btnpause, btnstop, upug, upmash,downug, downmash;
@@ -61,8 +61,11 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     Handler myHandler = new Handler();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -71,17 +74,23 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         seekBar2=findViewById(R.id.seekBar2);
         seekBar2.setOnSeekBarChangeListener(seekBarChangeListener);
 
+        slider2=findViewById(R.id.seekBar3);
+        slider2.addOnChangeListener((slider1, value, fromUser) -> {
+            slider2.setEnabled(false);
+            myHandler.postDelayed(pause, 1000);
+        });
+        slider3=findViewById(R.id.seekBar4);
+        slider3.addOnChangeListener((slider1, value, fromUser) -> {
+            slider3.setEnabled(false);
+            myHandler.postDelayed(pause, 1000);
+        });
         slider=findViewById(R.id.slider);
         slider.setEnabled(false);
-
-        slider2.findViewById(R.id.seekBar3);
-        slider3.findViewById(R.id.seekBar4);
 
         slider.addOnChangeListener((slider, value, fromUser) -> {
             ((TextView) findViewById(R.id.textView)).setText(getResources()
                     .getString(R.string.x0_x1f,slider.getValues().get(0) ,slider.getValues().get(1)));
         });
-
 
 //Инициализация кнопки перехода
         btnActTwo = findViewById(R.id.btnActTwo);// Кнопка перехода в 2 меню
@@ -168,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     private static final String TAG = "MainActivity";
 
-    private Runnable pause = new Runnable() {
+    private final Runnable pause = new Runnable() {
         @Override
         public void run() {
             x0_minus.setEnabled(true);
@@ -193,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             slider3.setEnabled(true);
         }
     };
-    private SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+    private final SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         }
@@ -630,14 +639,37 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         else if(id == R.id.btnpause){//Пауза
 
         }
+        else if(id == R.id.button){
+            
+        }
+        
         else if(id == R.id.btnstop){//Стоп
+            List<Float> floatList = slider.getValues();
+            floatList.set(0,0f);
+            floatList.set(1, 100f);
+            slider.setValues(floatList);
             slider3.setValue(0f);
             slider2.setValue(0f);
-            EditTextZadX0.setText(0);
-            EditTextZadX1.setText(0);
-            EditTextElUp.setText(0);
-            EditTextElDown.setText(0);
+            seekBar1.setProgress(0);
+            seekBar2.setProgress(0);
+            EditTextZadX0.setText("0");
+            EditTextZadX1.setText("0");
+            EditTextElUp.setText("0");
+            EditTextElDown.setText("0");
         }
-
+        else if(id == R.id.button17){//stop
+            List<Float> floatList = slider.getValues();
+            floatList.set(0,0f);
+            floatList.set(1, 100f);
+            slider.setValues(floatList);
+            slider3.setValue(0f);
+            slider2.setValue(0f);
+            seekBar1.setProgress(0);
+            seekBar2.setProgress(0);
+            EditTextZadX0.setText("0");
+            EditTextZadX1.setText("0");
+            EditTextElUp.setText("0");
+            EditTextElDown.setText("0");
+        }
     }
 }
